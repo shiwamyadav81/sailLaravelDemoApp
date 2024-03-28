@@ -10,13 +10,20 @@ class RealtimeMessage extends Component
 {
     use LivewireAlert;
 
+    public $uNotifications = [];
+
     #[On('echo:my-channel,RealtimeMessageEvent')]
-    public function handleRealtimeMessage(): void
+    public function handleRealtimeMessage($message): void
     {
-        $this->alert('success', 'Realtime Message', [
-            'timer' => 20000,
-            'toast' => true,
+        $this->uNotifications[] = $message['message'];
+        $this->alert('success', $message['message'], [
+            'timerProgressBar' => true,
+            'position' => 'center',
+            'timer' => 15000,
+            'toast' => false,
             'text' => 'Realtime Message',
+            'allowOutsideClick' => true,
+            'icon' => 'success',
         ]);
     }
     public function render()

@@ -12,7 +12,7 @@ class UserObserver
      */
     public function created(User $user): void
     {
-        event(new RealtimeMessageEvent('User ' . $user->name . ' created'));
+        event(new RealtimeMessageEvent('New User Created: ' . $user->name));
     }
 
     /**

@@ -23,7 +23,6 @@ class RealtimeMessageEvent implements ShouldBroadcast
     public function __construct(string $message)
     {
         $this->message = $message;
-        // dd($this->message);
     }
 
     /**
